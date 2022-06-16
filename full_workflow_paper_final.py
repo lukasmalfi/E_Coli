@@ -98,7 +98,7 @@ for i in range(len(freq_lsr)):
 # In[10]:
 
 
-#convert the list into a dataframe and sort it in descneding order
+#convert the list into a dataframe and sort it in descending order
 df_pear=pd.DataFrame(columns=["corr"])
 
 df_pear["corr"]=pearsons
@@ -107,7 +107,6 @@ df_corr_split=df_pear["corr"].str.split(" ",expand=True)
 
 df_corr_split.columns=["Gene","Pearson"]
 
-df_corr_split
 
 #df_corr_split[df_corr_split["Jaccard"]=="nan"]
 
