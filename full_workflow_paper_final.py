@@ -7,7 +7,6 @@
 import pandas as pd
 import numpy as np
 from ete3 import Tree, faces, TreeStyle, TextFace, CircleFace
-import os
 import holoviews as hv
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource, Label, LabelSet, Range1d
@@ -40,8 +39,9 @@ f_tst_no_grp=f_test[~f_test["Strain"].str.contains("group")]
 
 
 #split up the gene names (e.g lsrB_1_1 in ) with _ and use the first part- the actual gene names
-for num,gnname in enumerate(f_tst_no_grp["Strain"].str.split("_")):
+for num in range(len(f_tst_no_grp)):
     f_tst_no_grp.iloc[num,0]=f_tst_no_grp.iloc[num,0].split("_")[0]
+
 
 
 # In[6]:
@@ -189,7 +189,6 @@ def mylayout_lsrbfrla(node):
          
     #annotate nodes with color and shape depending on which gene and frequency it corresponds to
     if node.is_leaf():
-        
         node.img_style["size"] = 9
         node.img_style["shape"] = "square"
         
@@ -395,7 +394,7 @@ values_against=[]
 for r1 in range(len(no_lsrb_lins)):
 
     for r2 in range(len(with_lsrb_lins)):
-        if r1!=r2:
+        
             mini=np.minimum(no_lsrb_lins.iloc[r1],with_lsrb_lins.iloc[r2])
             maxi=np.maximum(no_lsrb_lins.iloc[r1],with_lsrb_lins.iloc[r2])
             values_against.append(sum(mini)/sum(maxi))
@@ -416,7 +415,7 @@ values_all=[]
 for r1 in range(len(freq_lsr.T)-1):
 
     for r2 in range(r1+1,len(freq_lsr.T)):
-        if r1!=r2:
+        
   
             mini=np.minimum(freq_lsr.T.iloc[r1],freq_lsr.T.iloc[r2])
             maxi=np.maximum(freq_lsr.T.iloc[r1],freq_lsr.T.iloc[r2])
@@ -454,8 +453,7 @@ dists_against=[]
 for r1 in range(len(lineages_no)):
 
     for r2 in range(len(lineages_with)):
-    #for c1 in range(len(with_lsrb_lins.columns)):
-        if r1!=r2:
+        
             dist=t.get_distance(str(lineages_no[r1]),str(lineages_with[r2]))
             dists_against.append(dist)
 
@@ -471,10 +469,10 @@ for r1 in range(len(partly)-1):
         dist=t.get_distance(str(partly[r1]),str(partly[r2]))
         dists_maybe.append(dist)
 dists_all=[]
+
 for r1 in range(len(freq_lsr.T)-1):
 
     for r2 in range(r1+1,len(freq_lsr.T)):
-        if r1!=r2:
             dist=t.get_distance(str(freq_lsr.columns[r1]),str(freq_lsr.columns[r2]))
             dists_all.append(dist)
             
