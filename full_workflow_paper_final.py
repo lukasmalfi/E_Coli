@@ -34,7 +34,10 @@ f_test.drop(labels=[12470],axis=0,inplace=True)
 #Filter out all genes of unknown function, idetified by containing "group"
 f_tst_no_grp=f_test[~f_test["Strain"].str.contains("group")]
 
+#reset the index
+f_tst_no_grp=f_tst_no_grp.reset_index()
 
+f_tst_no_grp=f_tst_no_grp.iloc[:,1:]
 # In[5]:
 
 
