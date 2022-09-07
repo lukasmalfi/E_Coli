@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 from ete3 import Tree, faces, TreeStyle, TextFace, CircleFace
 import holoviews as hv
+import os
 from bokeh.plotting import figure, output_file, show
 from bokeh.models import ColumnDataSource, Label, LabelSet, Range1d
 from bokeh.io import export_png
