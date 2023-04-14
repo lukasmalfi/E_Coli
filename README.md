@@ -1,4 +1,4 @@
-# E_Coli
+# E_Coli [![DOI](https://zenodo.org/badge/504179511.svg)](https://zenodo.org/badge/latestdoi/504179511)
 Code to generate Suppl. Table 2, Figure 3 and Supplementary Figure 3
 
 
